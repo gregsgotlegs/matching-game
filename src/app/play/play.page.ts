@@ -1,41 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatchesService } from '../matches.service';
+import { IMatch } from '../models/match.model';
 
 @Component({
   selector: 'app-play',
   templateUrl: 'play.page.html',
-  styleUrls: ['play.page.scss']
+  styleUrls: ['play.page.scss'],
 })
-export class PlayPage {
-
-
-
+export class PlayPage implements OnInit {
   public clickCount = 0;
 
-  public firstSelected: number;
-  public secondSelected: number;
+  public firstSelected: IMatch;
+  public secondSelected: IMatch;
 
   public result = 0;
 
   public corrects = new Set();
 
-  public list1 = [
-    { name: "biff", sisterId: 1 },
-    { name: "randy", sisterId: 2 },
-    { name: "amanda", sisterId: 3 }
-  ];
+  matches: IMatch[] = [];
 
-  public list2 = [
-    { name: "buff", sisterId: 1 },
-    { name: "rando", sisterId: 2 },
-    { name: "panda", sisterId: 3 }
-  ];
+  constructor(private matchService: MatchesService) {}
 
-  constructor() {
-
-  }
-
-  public buttonClicked() {
-    this.clickCount++;
+  ngOnInit(): void {
+    this.matchService.getMatches().subscribe((data: IMatch[]) => {
+      this.matches = data;
+    });
   }
 
   public submit() {
@@ -43,21 +32,18 @@ export class PlayPage {
       // this.result = "Correct!";
       // console.log("correct");
       this.corrects.add(this.firstSelected);
-
-
     }
 
     // this.result = "Aw hellllll naw";
     this.result = this.corrects.size;
-    if (this.result === this.list1.length) {
+    if (this.result === this.matches.length) {
       //alert("you win!");
     }
   }
 
-  public check(value: string) {
+  public check(value: IMatch) {
     return this.corrects.has(value);
-  };
-
+  }
 
   public deselected(which: number) {
     switch (which) {
@@ -71,16 +57,16 @@ export class PlayPage {
     console.log('%s side deselected', which);
   }
 
-  public choiceSelected(value: string, id: number, which: number) {
+  public choiceSelected(item: IMatch, which: number) {
     switch (which) {
       case 1:
-        this.firstSelected = id;
+        this.firstSelected = item;
         break;
       case 2:
-        this.secondSelected = id;
+        this.secondSelected = item;
         break;
     }
-    console.log('%s is on side %s', value, which);
+    // console.log('%s is on side %s', value, which);
     this.submit();
   }
 }
