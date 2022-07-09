@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Play
-    </ion-title>
+    <ion-title> Play </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,19 +12,20 @@
   </ion-header>
 
   <app-explore-container name="Play page"></app-explore-container>
-  <ion-button color="primary" (click)="buttonClicked()">
-    Primary: {{clickCount}}
-  </ion-button>
 
   <ion-grid>
     <ion-row>
       <ion-col>
         <ion-list>
           <ion-radio-group>
-            <ion-item *ngFor="let item of list1">
-              <ion-label>{{item.name}}</ion-label>
-              <ion-radio slot="start" value="{{item.name}}" [disabled]="check(item.sisterId)"
-                (ionFocus)="choiceSelected(item.name, item.sisterId, 1)">
+            <ion-item *ngFor="let item of matches">
+              <ion-label>{{item.word}}</ion-label>
+              <ion-radio
+                slot="start"
+                value="{{item.id}}"
+                [disabled]="check(item)"
+                (ionFocus)="choiceSelected(item, 1)"
+              >
               </ion-radio>
             </ion-item>
           </ion-radio-group>
@@ -35,10 +34,14 @@
       <ion-col>
         <ion-list>
           <ion-radio-group>
-            <ion-item *ngFor="let item of list2">
-              <ion-label>{{item.name}}</ion-label>
-              <ion-radio slot="start" value="{{item.name}}" [disabled]="check(item.sisterId)"
-                (ionFocus)="choiceSelected(item.name, item.sisterId, 2)">
+            <ion-item *ngFor="let item of matches">
+              <ion-label>{{item.sister}}</ion-label>
+              <ion-radio
+                slot="start"
+                value="{{item.id}}"
+                [disabled]="check(item)"
+                (ionFocus)="choiceSelected(item, 2)"
+              >
               </ion-radio>
             </ion-item>
           </ion-radio-group>
@@ -47,8 +50,5 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button color="primary" (click)="submit()">
-    {{result}}
-  </ion-button>
-
+  <ion-button color="primary" (click)="submit()"> {{result}} </ion-button>
 </ion-content>

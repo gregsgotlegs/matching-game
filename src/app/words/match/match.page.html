@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title size="small">Add new match</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <form #f="ngForm" novalidate (ngSubmit)="addMatch(f.value)">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Match ID</ion-label>
+          <ion-input
+            type="text"
+            name="id"
+            required
+            [(ngModel)]="match.id"
+            #idCtrl="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="!idCtrl.valid && idCtrl.touched">
+          <ion-text color="danger">Match ID is required</ion-text>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Word</ion-label>
+          <ion-input
+            type="text"
+            name="word"
+            required
+            [(ngModel)]="match.word"
+            #taskCtrl="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Translation</ion-label>
+          <ion-input
+            type="text"
+            name="sister"
+            required
+            [(ngModel)]="match.sister"
+            #taskCtrl="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-float-right" lines="none">
+          <ion-button type="submit" size="small" [disabled]="!f.valid">
+            Submit
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
