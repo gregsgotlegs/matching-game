@@ -9,28 +9,31 @@ const routes: Routes = [
     children: [
       {
         path: 'play',
-        loadChildren: () => import('../play/play.module').then(m => m.PlayPageModule)
+        loadChildren: () =>
+          import('../play/play.module').then((m) => m.PlayPageModule),
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../words/tab2.module').then(m => m.Tab2PageModule)
+        path: 'words',
+        loadChildren: () =>
+          import('../words/words.module').then((m) => m.WordsPageModule),
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () =>
+          import('../tab3/tab3.module').then((m) => m.Tab3PageModule),
       },
       {
         path: '',
         redirectTo: '/tabs/play',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/tabs/play',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

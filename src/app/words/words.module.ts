@@ -3,10 +3,10 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab2Page } from './tab2.page';
+import { WordsPage } from './words.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { WordsPageRoutingModule } from './words-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -15,10 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab2PageRoutingModule,
+    WordsPageRoutingModule,
     HttpClientModule,
     FormsModule,
   ],
-  declarations: [Tab2Page],
+  declarations: [WordsPage],
 })
-export class Tab2PageModule {}
+export class WordsPageModule {}

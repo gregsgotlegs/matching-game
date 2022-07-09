@@ -16,7 +16,7 @@ export class MatchPage {
   addMatch(match: IMatch) {
     this.matchService.addMatch(match).subscribe(() => {
       alert('Add new match successful' + match);
-      this.router.navigateByUrl('/tabs/tab2/');
+      this.router.navigateByUrl('/tabs/words/');
     });
   }
 }
