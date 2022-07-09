@@ -5,7 +5,7 @@
       <ion-icon
         slot="start"
         name="add"
-        routerLink="/tabs/tab2/match"
+        routerLink="/tabs/tab2/addmatch"
       ></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -31,7 +31,11 @@
           <ion-col>{{ match.word }}</ion-col>
           <ion-col>{{ match.sister }}</ion-col>
           <ion-col>
-            <a [routerLink]="'/match/' + match.id" size="small" shape="round">
+            <a
+              [routerLink]="'/tabs/tab2/match/' + match.id"
+              size="small"
+              shape="round"
+            >
               Edit
             </a>
           </ion-col>
@@ -47,5 +51,3 @@
     </ion-item>
   </ion-list>
 </ion-content>
-
-<router-outlet></router-outlet>
