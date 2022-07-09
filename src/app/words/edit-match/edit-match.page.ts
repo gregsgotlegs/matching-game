@@ -33,7 +33,7 @@ export class EditMatchPage implements OnInit {
   updateMatch(match?: IMatch) {
     this.matchService.updateMatch(match, this.match.id).subscribe(() => {
       alert('Successful update');
-      this.router.navigateByUrl('/tabs/tab2/matches');
+      this.router.navigateByUrl('/tabs/words/matches');
     });
   }
 }
