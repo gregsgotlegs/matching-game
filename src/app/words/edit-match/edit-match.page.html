@@ -1,9 +1,77 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>editMatch</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title size="small">Edit match : {{ match?.task}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="ion-padding">
+    <form #f="ngForm" novalidate (ngSubmit)="updateMatch(f.value)">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Match ID</ion-label>
+          <ion-input
+            type="text"
+            name="id"
+            required
+            [(ngModel)]="match.id"
+            #idCtrl="ngModel"
+            required
+          >
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="!idCtrl.valid && idCtrl.touched">
+          <ion-text color="danger">Match ID is required</ion-text>
+        </ion-text>
 
+        <ion-item>
+          <ion-label position="floating">Word</ion-label>
+          <ion-input
+            type="text"
+            name="word"
+            required
+            [(ngModel)]="match.word"
+            #taskCtrl="ngModel"
+            required
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger" *ngIf="!taskCtrl.valid && taskCtrl.touched">
+          <ion-text color="danger">Match word is required</ion-text>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Translation</ion-label>
+          <ion-input
+            type="text"
+            name="sister"
+            required
+            [(ngModel)]="match.sister"
+            #taskCtrl="ngModel"
+            required
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger" *ngIf="!taskCtrl.valid && taskCtrl.touched">
+          <ion-text color="danger">Match translation is required</ion-text>
+        </ion-text>
+
+        <ion-item class="ion-float-right" lines="none">
+          <ion-button type="submit" size="small" [disabled]="!f.valid">
+            Submit
+          </ion-button>
+
+          <ion-buttons slot="end">
+            <ion-icon
+              slot="start"
+              name="close"
+              routerLink="/tabs/tab2/matches"
+            ></ion-icon>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
 </ion-content>

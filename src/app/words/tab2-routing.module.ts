@@ -15,14 +15,14 @@ const routes: Routes = [
       import('./matches/matches.module').then((m) => m.MatchesPageModule),
   },
   {
-    path: 'edit-match',
+    path: 'match/:id',
     loadChildren: () =>
       import('./edit-match/edit-match.module').then(
         (m) => m.EditMatchPageModule
       ),
   },
   {
-    path: 'match',
+    path: 'addmatch',
     loadChildren: () =>
       import('./match/match.module').then((m) => m.MatchPageModule),
   },

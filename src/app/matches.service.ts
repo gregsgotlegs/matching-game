@@ -15,6 +15,14 @@ export class MatchesService {
     return this.http.get<Array<IMatch>>(`${URL_PREFIX}/matches`);
   }
 
+  getMatch(id: string): Observable<IMatch> {
+    console.log(
+      'getMatch',
+      this.http.get<IMatch>(`${URL_PREFIX}/matches/${id}`)
+    );
+    return this.http.get<IMatch>(`${URL_PREFIX}/matches/${id}`);
+  }
+
   addMatch(match: IMatch) {
     return this.http.post(`${URL_PREFIX}/matches`, match).pipe(
       catchError((error: HttpErrorResponse) => {
